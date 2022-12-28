@@ -4,9 +4,9 @@ import 'package:note_app/model/note.dart';
 
 final _lightColors = [
   const Color.fromARGB(255, 228, 255, 225),
-  Colors.tealAccent.shade100,
+  const Color.fromARGB(255, 237, 196, 179),
   const Color.fromARGB(255, 255, 232, 194),
-  const Color.fromARGB(255, 240, 168, 104),
+  const Color.fromARGB(255, 216, 226, 220),
   const Color.fromARGB(255, 244, 253, 217),
 ];
 

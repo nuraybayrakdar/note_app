@@ -30,7 +30,7 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
   Future refreshNote() async {
     setState(() => isLoading = true);
 
-    this.note = await NotesDatabase.instance.readNote(widget.noteId);
+    note = await NotesDatabase.instance.readNote(widget.noteId);
 
     setState(() => isLoading = false);
   }
@@ -79,8 +79,9 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
         await Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => AddNotePage(note: note),
         ));
-
-        refreshNote();
+        setState(() {
+          refreshNote();
+        });
       });
 
   Widget deleteButton() => IconButton(

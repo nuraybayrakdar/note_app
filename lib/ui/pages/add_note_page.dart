@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/model/note.dart';
 import 'package:note_app/repository/notes_db.dart';
+import 'package:note_app/ui/pages/notes_page.dart';
 import 'package:note_app/ui/widgets/noteForm.dart';
 
 class AddNotePage extends StatefulWidget {
@@ -34,6 +35,15 @@ class _AddNotePageState extends State<AddNotePage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: ((context) => const NotesPage())),
+              );
+              NotesDatabase.instance.readAllNotes();
+            },
+            icon: const Icon(Icons.arrow_back_outlined),
+          ),
           actions: [buildButton()],
         ),
         body: Form(
@@ -80,8 +90,10 @@ class _AddNotePageState extends State<AddNotePage> {
       } else {
         await addNote();
       }
-
-      Navigator.of(context).pop();
+      NotesDatabase.instance.readAllNotes();
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => const NotesPage(),
+      ));
     }
   }
 

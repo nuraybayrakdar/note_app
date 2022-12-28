@@ -3,6 +3,8 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:note_app/model/note.dart';
 import 'package:note_app/repository/notes_db.dart';
 import 'package:note_app/ui/pages/add_note_page.dart';
+import 'package:note_app/ui/pages/note_detail_page.dart';
+import 'package:note_app/ui/widgets/noteCard.dart';
 
 class NotesPage extends StatefulWidget {
   const NotesPage({super.key});
@@ -18,21 +20,20 @@ class _NotesPageState extends State<NotesPage> {
   @override
   void initState() {
     super.initState();
-
-    refreshNotes();
+    setState(() {
+      refreshNotes();
+    });
   }
 
   @override
   void dispose() {
-    NotesDatabase.instance.close();
-
+    //NotesDatabase.instance.close();
     super.dispose();
   }
 
   Future refreshNotes() async {
     setState(() => isLoading = true);
-
-    this.notes = await NotesDatabase.instance.readAllNotes();
+    notes = await NotesDatabase.instance.readAllNotes();
 
     setState(() => isLoading = false);
   }
@@ -43,7 +44,7 @@ class _NotesPageState extends State<NotesPage> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 3, 102, 53),
         title: const Text(
-          "Notlarım",
+          "My Notes",
           style: TextStyle(
               fontFamily: 'RobotoMono',
               fontWeight: FontWeight.bold,
@@ -56,14 +57,27 @@ class _NotesPageState extends State<NotesPage> {
           )
         ],
       ),
-      body: SizedBox(
-        child: buildNotes(),
+      body: Center(
+        child: isLoading
+            ? const CircularProgressIndicator(
+                color: Color.fromARGB(231, 3, 161, 83),
+              )
+            : notes.isEmpty
+                ? const Text(
+                    'No Notes!',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w900,
+                        fontFamily: 'RobotoMono'),
+                  )
+                : buildNotes(),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(231, 3, 161, 83),
         child: const Icon(Icons.add),
         onPressed: () async {
-          await Navigator.of(context).push(
+          await Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: ((context) => const AddNotePage())),
           );
         },
@@ -73,21 +87,24 @@ class _NotesPageState extends State<NotesPage> {
 
   Widget buildNotes() => StaggeredGridView.countBuilder(
         padding: const EdgeInsets.all(8),
-        itemCount: 12,
+        itemCount: notes.length,
         staggeredTileBuilder: (index) => const StaggeredTile.fit(2),
         crossAxisCount: 4,
         mainAxisSpacing: 4,
         crossAxisSpacing: 4,
         itemBuilder: (context, index) {
-          // final note = notes[index];
+          final note = notes[index];
 
           return GestureDetector(
-              onTap: () async {
-                refreshNotes();
-              },
-              child:
-                  Text("Yeni not") //NoteCardWidget(note: note, index: index),
-              );
+            onTap: () async {
+              await Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => NoteDetailPage(noteId: note.id!),
+              ));
+
+              refreshNotes();
+            },
+            child: NoteCardWidget(note: note, index: index),
+          );
         },
       );
 }

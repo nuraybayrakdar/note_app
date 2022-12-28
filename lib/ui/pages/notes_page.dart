@@ -41,7 +41,7 @@ class _NotesPageState extends State<NotesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 35, 33, 33),
+        backgroundColor: const Color.fromARGB(255, 3, 102, 53),
         title: const Text(
           "Notlarım",
           style: TextStyle(
@@ -60,7 +60,7 @@ class _NotesPageState extends State<NotesPage> {
         child: buildNotes(),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color.fromARGB(255, 35, 33, 33),
+        backgroundColor: const Color.fromARGB(231, 3, 161, 83),
         child: const Icon(Icons.add),
         onPressed: () async {
           await Navigator.of(context).push(
@@ -72,9 +72,9 @@ class _NotesPageState extends State<NotesPage> {
   }
 
   Widget buildNotes() => StaggeredGridView.countBuilder(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         itemCount: 12,
-        staggeredTileBuilder: (index) => StaggeredTile.fit(2),
+        staggeredTileBuilder: (index) => const StaggeredTile.fit(2),
         crossAxisCount: 4,
         mainAxisSpacing: 4,
         crossAxisSpacing: 4,

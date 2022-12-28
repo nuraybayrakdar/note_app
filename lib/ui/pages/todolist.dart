@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/ui/widgets/appbarContent.dart';
+import 'package:note_app/ui/widgets/appbarPainter.dart';
 
 class ToDoListPage extends StatefulWidget {
   const ToDoListPage({super.key});
@@ -11,21 +13,17 @@ class _ToDoListPageState extends State<ToDoListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Yapılacaklar"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            FloatingActionButton(
-              onPressed: () {},
-              tooltip: 'Increment',
-              child: const Icon(Icons.add),
-            ),
-          ],
+        appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 3, 102, 53),
         ),
-      ),
-    );
+        body: Column(
+          children: [],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          tooltip: 'Increment',
+          backgroundColor: const Color.fromARGB(255, 3, 102, 53),
+          child: const Icon(Icons.add),
+        ));
   }
 }

@@ -91,7 +91,7 @@ class _AddNotePageState extends State<AddNotePage> {
         await addNote();
       }
       NotesDatabase.instance.readAllNotes();
-      Navigator.of(context).push(MaterialPageRoute(
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) => const NotesPage(),
       ));
     }

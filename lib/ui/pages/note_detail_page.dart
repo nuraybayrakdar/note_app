@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:note_app/model/note.dart';
 import 'package:note_app/repository/notes_db.dart';
 import 'package:note_app/ui/pages/add_note_page.dart';
+import 'package:note_app/ui/pages/notes_page.dart';
 
 class NoteDetailPage extends StatefulWidget {
   final int noteId;
@@ -30,7 +31,7 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
   Future refreshNote() async {
     setState(() => isLoading = true);
 
-    note = await NotesDatabase.instance.readNote(widget.noteId);
+    this.note = await NotesDatabase.instance.readNote(widget.noteId);
 
     setState(() => isLoading = false);
   }
@@ -38,6 +39,13 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+              NotesDatabase.instance.readAllNotes();
+            },
+            icon: const Icon(Icons.arrow_back_outlined),
+          ),
           actions: [editButton(), deleteButton()],
         ),
         body: isLoading
@@ -50,7 +58,7 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
                     Text(
                       note.title,
                       style: const TextStyle(
-                        color: Colors.white,
+                        color: Color.fromARGB(255, 23, 4, 4),
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
@@ -79,9 +87,8 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
         await Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => AddNotePage(note: note),
         ));
-        setState(() {
-          refreshNote();
-        });
+
+        refreshNote();
       });
 
   Widget deleteButton() => IconButton(

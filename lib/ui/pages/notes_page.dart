@@ -3,6 +3,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:note_app/model/note.dart';
 import 'package:note_app/repository/notes_db.dart';
 import 'package:note_app/ui/pages/add_note_page.dart';
+import 'package:note_app/ui/pages/homepage.dart';
 import 'package:note_app/ui/pages/note_detail_page.dart';
 import 'package:note_app/ui/widgets/noteCard.dart';
 
@@ -25,16 +26,9 @@ class _NotesPageState extends State<NotesPage> {
     });
   }
 
-  @override
-  void dispose() {
-    //NotesDatabase.instance.close();
-    super.dispose();
-  }
-
   Future refreshNotes() async {
     setState(() => isLoading = true);
     notes = await NotesDatabase.instance.readAllNotes();
-
     setState(() => isLoading = false);
   }
 
@@ -42,6 +36,13 @@ class _NotesPageState extends State<NotesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const HomePage()));
+          },
+          icon: const Icon(Icons.arrow_back_outlined),
+        ),
         backgroundColor: const Color.fromARGB(255, 3, 102, 53),
         title: const Text(
           "My Notes",

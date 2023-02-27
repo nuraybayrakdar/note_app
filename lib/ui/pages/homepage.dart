@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                 child: ElevatedButton(
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                          Color.fromARGB(233, 3, 102, 52),
+                          const Color.fromARGB(233, 3, 102, 52),
                         ),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(

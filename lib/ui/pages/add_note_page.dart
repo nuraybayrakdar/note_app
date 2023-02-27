@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:note_app/model/note.dart';
 import 'package:note_app/repository/notes_db.dart';
@@ -70,8 +72,8 @@ class _AddNotePageState extends State<AddNotePage> {
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          onPrimary: Colors.white,
-          primary: isFormValid ? null : Colors.grey.shade700,
+          foregroundColor: Colors.white,
+          backgroundColor: isFormValid ? null : Colors.grey.shade700,
         ),
         onPressed: addOrUpdateNote,
         child: const Text('Save'),
@@ -91,6 +93,7 @@ class _AddNotePageState extends State<AddNotePage> {
         await addNote();
       }
       NotesDatabase.instance.readAllNotes();
+      // ignore: use_build_context_synchronously
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) => const NotesPage(),
       ));

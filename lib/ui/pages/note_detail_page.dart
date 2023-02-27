@@ -1,9 +1,10 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:note_app/model/note.dart';
 import 'package:note_app/repository/notes_db.dart';
 import 'package:note_app/ui/pages/add_note_page.dart';
-import 'package:note_app/ui/pages/notes_page.dart';
 
 class NoteDetailPage extends StatefulWidget {
   final int noteId;
@@ -96,6 +97,7 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
         onPressed: () async {
           await NotesDatabase.instance.delete(widget.noteId);
 
+          // ignore: use_build_context_synchronously
           Navigator.of(context).pop();
         },
       );

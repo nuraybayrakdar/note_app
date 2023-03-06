@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/ui/widgets/appbarContent.dart';
-import 'package:note_app/ui/widgets/appbarPainter.dart';
 
 class ToDoListPage extends StatefulWidget {
   const ToDoListPage({super.key});

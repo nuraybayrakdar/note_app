@@ -9,14 +9,14 @@ class AppbarContent extends StatelessWidget {
       height: 155,
       width: 500,
       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-      child: _header(),
+      child: header(),
     );
   }
 
-  Widget _header() {
-    return Row(
+  Widget header() {
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
+      children: [
         Icon(
           Icons.light_mode_outlined,
           color: Colors.white,
@@ -31,10 +31,10 @@ class AppbarContent extends StatelessWidget {
     );
   }
 
-  Widget _userInfo() {
-    return Row(
+  Widget userInfo() {
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
+      children: [
         Icon(
           Icons.arrow_back_rounded,
           color: Colors.white,

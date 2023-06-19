@@ -65,3 +65,17 @@ class Note {
         NoteFields.time: createdTime.toIso8601String(),
       };
 }
+
+class Notes {
+  int id;
+  String title;
+  String desc;
+  String date;
+
+  Notes({
+    required this.id,
+    required this.title,
+    required this.desc,
+    required this.date,
+  });
+}

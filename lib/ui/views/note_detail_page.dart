@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:note_app/model/note.dart';
-import 'package:note_app/repository/notes_db.dart';
-import 'package:note_app/ui/pages/add_note_page.dart';
+import 'package:note_app/data/notes_db.dart';
+import 'package:note_app/ui/views/add_note_page.dart';
 
 class NoteDetailPage extends StatefulWidget {
   final int noteId;
@@ -32,7 +32,7 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
   Future refreshNote() async {
     setState(() => isLoading = true);
 
-    this.note = await NotesDatabase.instance.readNote(widget.noteId);
+    note = await NotesDatabase.instance.readNote(widget.noteId);
 
     setState(() => isLoading = false);
   }

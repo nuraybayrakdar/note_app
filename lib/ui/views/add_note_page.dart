@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:note_app/model/note.dart';
-import 'package:note_app/repository/notes_db.dart';
-import 'package:note_app/ui/pages/notes_page.dart';
-import 'package:note_app/ui/widgets/noteForm.dart';
+import 'package:note_app/data/notes_db.dart';
+import 'package:note_app/ui/views/notes_page.dart';
+import 'package:note_app/ui/widgets/note_form.dart';
 
 class AddNotePage extends StatefulWidget {
   final Note? note;

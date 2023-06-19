@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/ui/pages/login.dart';
+import 'package:note_app/ui/views/notes_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
+      home: const NotesPage(),
     );
   }
 }
@@ -36,14 +36,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text(" "),
-          ],
-        ),
       ),
     );
   }

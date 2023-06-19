@@ -14,7 +14,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 3, 102, 53),
         ),
-        body: Column(
+        body: const Column(
           children: [],
         ),
         floatingActionButton: FloatingActionButton(

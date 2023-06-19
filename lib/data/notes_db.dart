@@ -1,3 +1,4 @@
+// ignore_for_file: depend_on_referenced_packages
 import 'package:note_app/model/note.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';

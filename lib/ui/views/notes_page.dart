@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:note_app/model/note.dart';
-import 'package:note_app/repository/notes_db.dart';
-import 'package:note_app/ui/pages/add_note_page.dart';
-import 'package:note_app/ui/pages/homepage.dart';
-import 'package:note_app/ui/pages/note_detail_page.dart';
-import 'package:note_app/ui/widgets/noteCard.dart';
+import 'package:note_app/data/notes_db.dart';
+import 'package:note_app/ui/views/add_note_page.dart';
+import 'package:note_app/ui/views/homepage.dart';
+import 'package:note_app/ui/views/note_detail_page.dart';
+import 'package:note_app/ui/widgets/note_card.dart';
 
 class NotesPage extends StatefulWidget {
   const NotesPage({super.key});

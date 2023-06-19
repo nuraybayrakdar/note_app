@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/ui/pages/notes_page.dart';
-import 'package:note_app/ui/pages/todolist.dart';
-import 'package:note_app/ui/widgets/appbarContent.dart';
-import 'package:note_app/ui/widgets/appbarPainter.dart';
+import 'package:note_app/ui/views/notes_page.dart';
+import 'package:note_app/ui/views/todolist.dart';
+import 'package:note_app/ui/widgets/appbar_content.dart';
+import 'package:note_app/ui/widgets/appbar_painter.dart';
+import 'package:note_app/data/note_repository.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    NoteRepository().fetchData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
